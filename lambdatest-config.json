@@ -1,19 +1,28 @@
+
 {
   "lambdatest_auth": {
     "username": "",
     "access_key": ""
   },
   "browsers": [
-    { "browser": "Chrome", "platform": "Windows 10", "versions": ["latest"] },
-    { "browser": "MicrosoftEdge", "platform": "macOS Catalina", "versions": ["latest"] }
+    {
+      "browser": "Chrome",
+      "platform": "Windows 10",
+      "versions": ["latest"]
+    },
+    {
+      "browser": "MicrosoftEdge",
+      "platform": "macOS Ventura",
+      "versions": ["latest"]
+    }
   ],
   "run_settings": {
-    "cypress_config_file": "cypress.config.js",
     "build_name": "Cypress101-Marilia",
     "parallels": 2,
-    "specs": "./cypress/e2e/*.cy.js",
+    "specs": "./cypress/e2e/**/*.cy.js",
     "ignore_files": "",
     "network": true,
+    "video": true,
     "headless": false,
     "npm_dependencies": {
       "cypress": "15",
@@ -24,5 +33,5 @@
       "lighthouse": "latest"
     }
   },
-  "tunnel_settings": { "tunnel": false, "tunnelName": null }
+  "tunnel_settings": {}
 }

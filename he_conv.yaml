@@ -1,0 +1,55 @@
+version: "0.1"
+globalTimeout: 90
+testSuiteTimeout: 90
+testSuiteStep: 90
+runson: ${matrix.os}
+cypress: true
+concurrency: 2
+jobLabel:
+  - heJob
+pre:
+  - npm install cypress@15 --legacy-peer-deps
+  - npm install cypress-axe@latest --legacy-peer-deps
+  - npm install axe-core@latest --legacy-peer-deps
+  - npm install cypress-xpath@latest --legacy-peer-deps
+  - npm install @cypress-audit/lighthouse@latest --legacy-peer-deps
+  - npm install lighthouse@latest --legacy-peer-deps
+  - npm install cypress@15.0.0 --legacy-peer-deps
+cacheKey: '{{ checksum "package.lock.json" }}'
+cacheDirectories:
+  - node_modules
+  - cypressCache
+env:
+  CYPRESS_CACHE_FOLDER: cypressCache
+  HYPEREXECUTE_CUSTOM_BUILD: Cypress101-Marilia
+matrix:
+  browser:
+    - Chrome-latest
+    - MicrosoftEdge-latest
+  test:
+    - ./cypress/e2e/01-slider.cy.js
+    - ./cypress/e2e/02-input-form.cy.js
+  os:
+    - win
+    - mac13
+testSuites:
+  - npx cypress run --browser=$browser --headed --config video=false --spec $test
+cypressOps:
+  DedicatedProxy: false
+  Build: Cypress101-Marilia
+  BuildTags: []
+  Tags: []
+  Network: true
+  GeoLocation: ""
+  ReporterConfigFile: base_reporter_config.json
+  ProjectAutoCreate: true
+uploadArtefacts: []
+project:
+  name: cypress_project
+  differentialUpload:
+    enabled: true
+    ttlHours: 60
+combineTasksInMatrixMode: true
+runtime:
+  language: node
+  version: 16.18.1
