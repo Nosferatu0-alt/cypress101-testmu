@@ -1,0 +1,24 @@
+{
+  "name": "cypress101-testmu",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "commonjs",
+  "devDependencies": {
+    "@cypress-audit/lighthouse": "^1.4.2",
+    "axe-core": "^4.14.0",
+    "cypress": "^15.21.1",
+    "cypress-axe": "^1.7.0",
+    "cypress-xpath": "^2.0.1",
+    "lighthouse": "^13.5.0"
+  },
+  "allowScripts": {
+    "cypress@15.21.1": true
+  }
+}
